@@ -1,0 +1,41 @@
+PROCEDURE vector(var n:INTEGER)
+VAR
+    set_declarations
+BEGIN
+    REPEAT
+        Write("Give the Size Of the vector "); 
+        Read(n); 
+    UNTIL (n>0); 
+END
+PROCEDURE Remplir(var v: ARRAY_OF INTEGER[10]; n:INTEGER)
+VAR
+    i:INTEGER; 
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read(v[i]); 
+    END_FOR
+END
+FUNCTION dot_product(v1,v2: ARRAY_OF INTEGER[10], n:INTEGER) : INTEGER
+VAR
+    i:INTEGER;
+    PS:INTEGER=0;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        PS=PS + v1[i]*v2[i];
+    END_FOR
+    RETURN PS ;
+END
+ALGORITHM Scalair
+VAR
+    v1: ARRAY_OF INTEGER[10];
+    v2: ARRAY_OF INTEGER[10];
+    DP:INTEGER;
+BEGIN
+    vector(n);
+    Remplir(v1,n);
+    Remplir(v2,n);
+    DP=dot_product(v1,v2,n);
+    IF (DP=0) THEN
+        write("the two vectors are orthogonal")
+    END_IF
+END
